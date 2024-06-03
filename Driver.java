@@ -35,20 +35,37 @@ public class Driver {
 		
 
 		try {
-            Polynomial p3 = new Polynomial(new File("polytest1.txt"));
-            System.out.println("coefficient list: " + java.util.Arrays.toString(p3.co));
-            System.out.println("exponent list: " + java.util.Arrays.toString(p3.exp));
-        } catch (IOException e){
-            System.out.println("error in file reading");
-        }
+            	Polynomial p3 = new Polynomial(new File("polytest1.txt"));
+            	System.out.println("coefficient list: " + java.util.Arrays.toString(p3.co));
+            	System.out.println("exponent list: " + java.util.Arrays.toString(p3.exp));
+        	} 
+		catch (IOException e){
+            	System.out.println("error in file reading");
+        	}
+		try {
+            	Polynomial p00 = new Polynomial(new File("polytest4.txt"));
+            	System.out.println("coefficient list: " + java.util.Arrays.toString(p00.co));
+            	System.out.println("exponent list: " + java.util.Arrays.toString(p00.exp));
+        	} 
+		catch (IOException e){
+            	System.out.println("error in file reading");
+        	}
 
-        // Test the saveToFile method
-        Polynomial p4 = new Polynomial(new double[]{1.0, -2.2, -7}, new int[]{5, 1, 0});
-        try {
-            p4.saveToFile("polytest2.txt");
-            System.out.println("saved to 'polytest2.txt'");
-        } catch (IOException e){
-            System.out.println("error in file writing");
-        }
-    }	
+        	
+        	Polynomial p4 = new Polynomial(new double[]{1.0, -2.2, -7}, new int[]{5, 1, 0});
+        	try {
+            		p4.saveToFile("polytest2.txt");
+            		System.out.println("saved to 'polytest2.txt'");
+        	} 
+		catch (IOException e){
+            	System.out.println("error in file writing");
+        	}
+		try {
+            		p0.saveToFile("polytest3.txt");
+            		System.out.println("saved to 'polytest3.txt'");
+        	} 
+		catch (IOException e){
+            	System.out.println("error in file writing");
+        	}
+    	}	
 }

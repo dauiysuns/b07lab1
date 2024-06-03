@@ -7,11 +7,15 @@ public class Polynomial{
     public int[] exp;
 
     public Polynomial(){
-        this.co = new double[0];
-        this.exp = new int[0];
+        this.co = null;
+        this.exp = null;
     }
 
     public Polynomial(double[] co, int[] exp){
+	if ((co == null && exp == null)||(co.length == 0 && exp.length == 0)){
+		this.co = null; this.exp = null;
+		return;
+	}
         double[] temp_co = new double[co.length];
         int[] temp_exp = new int[exp.length];
         int size = 0;
@@ -64,6 +68,11 @@ public class Polynomial{
         String line = reader.readLine();
         reader.close();
         String[] terms = line.split("(?=[+-])"); //split in front of +,- using regex 
+	if (terms.length == 1 && terms[0] == "0"){
+		this.co = null;
+		this.exp = null;
+		return;
+	}
 
         int[] exp = new int[terms.length];
         double[] co = new double[terms.length];
@@ -173,6 +182,9 @@ public class Polynomial{
     public double evaluate(double x){
         //using the given value of x, calculate the polynomial
         //return evaluated number
+	if (co == null && exp == null){
+		return 0;
+	}
         double counter = 0;
         for (int i = 0; i < co.length; i++) {
             counter += co[i] * Math.pow(x, exp[i]);
@@ -222,6 +234,12 @@ public class Polynomial{
     */
     public void saveToFile(String name) throws IOException{
         FileWriter writer = new FileWriter(name);
+	if (this.exp == null && this.co == null){
+		System.out.println("HELPPP");
+		writer.write("0");
+		writer.close();
+		return;
+	}
         for (int i = 0; i < exp.length; i++){
             if (exp[i] == 0){
                 writer.write(Double.toString(co[i]));
