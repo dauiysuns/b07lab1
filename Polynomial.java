@@ -235,7 +235,6 @@ public class Polynomial{
     public void saveToFile(String name) throws IOException{
         FileWriter writer = new FileWriter(name);
 	if (this.exp == null && this.co == null){
-		System.out.println("HELPPP");
 		writer.write("0");
 		writer.close();
 		return;
